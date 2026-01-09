@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>JSON 树形结构解析器</title>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="container">
+  <h1>JSON 树状结构解析器</h1>
+
+  <!-- 1. 单选输入方式 -->
+  <div class="radio-group">
+    <label><input type="radio" name="source" value="file" id="source-file"> 文件上传</label>
+    <label><input type="radio" name="source" value="url" id="source-url"> URL 拉取</label>
+    <label><input type="radio" name="source" value="text" id="source-text" checked> 直接输入</label>
+  </div>
+
+  <!-- 2. 对应输入面板 -->
+  <div class="input-panel" id="panel-file">
+    <input type="file" id="fileInput" accept=".json" title="选择 JSON 文件">
+  </div>
+  <div class="input-panel" id="panel-url">
+    <input type="url" id="urlInput" placeholder="输入 JSON 文件 URL">
+  </div>
+  <div class="input-panel active" id="panel-text">
+    <textarea id="jsonInput" placeholder="粘贴或输入 JSON 内容">[{"v": "1.0.4"}]</textarea>
+  </div>
+  <button onclick="handleImport()">导入并解析</button>
+  <div class="loading" id="loading">解析 JSON 数据中...</div>
+  <div class="error" id="error"></div>
+
+  <!-- 3. 结果区域 -->
+  <div class="output-section" id="output">
+    <input id="searchBox" placeholder="搜索键/值…" class="input-search"/>
+    <h3>解析结果</h3>
+    <div class="json-tree" id="treeView"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
